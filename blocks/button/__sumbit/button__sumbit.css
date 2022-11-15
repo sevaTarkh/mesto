@@ -1,0 +1,20 @@
+.button__sumbit{
+    max-width: 358px;
+    width: 100%;
+    height: 50px;
+    background: #000000;
+    border-radius: 2px;
+    margin: 48px 36px 0;
+    color: white;
+    padding: 0;
+}
+.button__sumbit:hover{
+    opacity: .8;
+}
+@media  screen and (max-width: 890px) {
+    .button__sumbit{
+        max-width: 238px;
+        height: 46px;
+        margin: 45px 22px 0;
+    }
+}

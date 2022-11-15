@@ -1,0 +1,20 @@
+.button__edit{
+    width: 25px;
+    height: 25px;
+    margin-top: 15px;
+    border: 1px solid #FFFFFF;
+    background-color:  rgba(0, 0, 0, 1);
+    padding: 0;
+    grid-area: btn;
+
+}
+.button__edit:hover{
+    opacity: .8;
+}
+@media screen and (max-width: 890px){
+    .button__edit{
+        width: 18px;
+        height: 18px;
+        margin-top: 8px;
+    }
+}

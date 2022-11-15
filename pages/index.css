@@ -1,0 +1,48 @@
+@import url(../vendor/normalize.css);
+
+@import url(../vendor/fonts/fonts.css);
+
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__line/header__line.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__addButton/profile__addButton.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__editButton/profile__editButton.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__avatar-foto/profile__avatar-foto.css);
+
+@import url(../blocks/button/__add/button__add.css);
+@import url(../blocks/button/__edit/button__edit.css);
+@import url(../blocks/button/__like/button__like.css);
+@import url(../blocks/button/__close/button__close.css);
+@import url(../blocks/button/__sumbit/button__sumbit.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__likebutton/element__likebutton.css);
+@import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__info/element__info.css);
+@import url(../blocks/element/_is-active/element_is-active.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__closeButton/popup__closeButton.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__edit/popup__edit.css);
+@import url(../blocks/popup/__field1/popup__field1.css);
+@import url(../blocks/popup/__field2/popup__field2.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__sumbitButton/popup__sumbitButton.css);
+@import url(../blocks/popup/__is-opened/popup_is-opened.css);
+@import url(../blocks/popup/__form/popup__form.css);
+
+@import url(../scripts/script.js);

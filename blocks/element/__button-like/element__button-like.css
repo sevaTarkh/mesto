@@ -1,8 +1,8 @@
-.button__like{
+.element__button-like{
     padding: 0;
     margin: 0;
     border: none;
 }
-.button__like:hover{
+.element__button-like:hover{
     opacity: .8;
 }

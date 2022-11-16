@@ -1,13 +1,13 @@
 const popupElement = document.querySelector('.popup');
-const popupEditButton = document.querySelector('.button__edit');
-const popupCloseButton = document.querySelector('.button__close');
-const popupSumbitButton = document.querySelector('.button__sumbit');
+const popupEditButton = document.querySelector('.profile__button-edit');
+const popupCloseButton = document.querySelector('.popup__button-close');
+const popupSumbitButton = document.querySelector('.popup__button-sumbit');
 let profile__title = document.querySelector('.profile__title');
 let profile__subtitle = document.querySelector('.profile__subtitle');
 let nameInput = document.querySelector('.popup__field1');
 let jobInput = document.querySelector('.popup__field2');
 let formElement = document.querySelector('.popup__container');
-const popupLikeButton = document.querySelector('.button__like');
+const popupLikeButton = document.querySelector('.element__button-like');
 let popuLikeElement = document.querySelector('.element__likebutton');
 
 

@@ -1,4 +1,4 @@
-.button__sumbit{
+.popup__button-sumbit{
     max-width: 358px;
     width: 100%;
     height: 50px;
@@ -14,11 +14,11 @@
     line-height: 22px;
     text-align: center;
 }
-.button__sumbit:hover{
+.popup__button-sumbit:hover{
     opacity: .8;
 }
 @media  screen and (max-width: 890px) {
-    .button__sumbit{
+    .popup__button-sumbit{
         max-width: 238px;
         height: 46px;
         margin: 45px 22px 0;

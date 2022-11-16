@@ -4,19 +4,12 @@ const popupCloseButton = document.querySelector('.popup__button-close');
 const popupSumbitButton = document.querySelector('.popup__button-sumbit');
 let profile__title = document.querySelector('.profile__title');
 let profile__subtitle = document.querySelector('.profile__subtitle');
-let nameInput = document.querySelector('.popup__field1');
-let jobInput = document.querySelector('.popup__field2');
+let nameInput = document.querySelector('.popup__field-name');
+let jobInput = document.querySelector('.popup__field-about');
 let formElement = document.querySelector('.popup__container');
 const popupLikeButton = document.querySelector('.element__button-like');
 let popuLikeElement = document.querySelector('.element__likebutton');
 
-
-//const likePopup = function() {
- //   popuLikeElement.classList.add('element_is-active');
-//};
-//const disLikePopup =function(){
-  //  popuLikeElement.classList.remove('element_is-active');
-//}
 const closePopup = function() {
     popupElement.classList.remove('popup_is-opened');
 };
@@ -37,7 +30,6 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 popupCloseButton.addEventListener('click', closePopup);
 popupEditButton.addEventListener('click', openPopup);
-//popupLikeButton.addEventListener('click', disLikePopup);
-//popupLikeButton.addEventListener('click', likePopup);
+
 
 

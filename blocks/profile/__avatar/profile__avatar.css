@@ -1,11 +1,11 @@
 .profile__avatar{
     margin-left: 0;
-    display: flex;
-    
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
 }
 @media screen and (max-width: 890px){
     .profile__avatar{
-        margin-left: 0;
-        justify-content: center;
+        align-self: center;
     }
 }

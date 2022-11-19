@@ -2,7 +2,8 @@
     padding: 0;
     margin: 0;
     border: none;
+    background: transparent;
 }
 .element__button-like:hover{
-    opacity: .8;
+    opacity: .5;
 }

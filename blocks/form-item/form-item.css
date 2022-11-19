@@ -1,7 +1,7 @@
-.form__item{
+.form-item{
     max-width: 358px;
     width: 100%;
-    font-family: 'Inter', serif;
+    font-family: 'Inter', 'Arial', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -11,10 +11,10 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.form__item:focus{
+.form-item:focus{
     outline: 2px solid rgba(3, 33, 116, 0.342);
     border-bottom: none;
 }
-.form__item:first-of-type{
+.form-item:first-of-type{
         margin-top: 0;
 }

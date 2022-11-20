@@ -1,5 +1,4 @@
-.form-item{
-    max-width: 358px;
+.popup__field{
     width: 100%;
     font-family: 'Inter', 'Arial', sans-serif;
     font-style: normal;
@@ -10,11 +9,14 @@
     margin-top: 30px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0;
+    height: 26px;
+    vertical-align: start;
 }
-.form-item:focus{
+.popup__field:focus{
     outline: 2px solid rgba(3, 33, 116, 0.342);
     border-bottom: none;
 }
-.form-item:first-of-type{
-        margin-top: 0;
+.popup__field:first-of-type{
+    margin-top: 0;
 }

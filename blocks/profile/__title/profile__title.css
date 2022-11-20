@@ -12,10 +12,10 @@
     margin: 0;
     grid-area: title;
 }
-@media screen and (max-width: 890px){
+@media screen and (max-width: 970px){
     .profile__title{
         font-size: 27px;
         line-height: 33px;
-        max-width: 189px;
+        width: 189px;
     }
 }

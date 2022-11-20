@@ -3,7 +3,7 @@
     height: 22px;
     color: #FFFFFF;
 }
-@media screen and (max-width: 890px){
+@media screen and (max-width: 970px){
     .profile__add-image{
         width: 16px;
         height: 16px;

@@ -25,82 +25,61 @@
                   <img class="profile__add-image" alt="фото плюса" src="./images/add-button.svg">
                </button>
             </section>
-            <section class="elements">
-               <div class="element">
-                  <img class="element__image" alt="фото пейзажа" src="./images/kirill-pershin-1404681-unsplash.jpg">
-                  <div class="element__info">
-                     <h3 class="element__title">Гора Эльбрус</h3>
-                     <button class="element__button-like" type="button">
-                        <img class="element__like-image" alt="фото лайка" src="./images/like-button.svg">
-                     </button>
-                  </div>
-               </div>
-               <div class="element">
-                  <img class="element__image" alt="фото пейзажа" src="./images/kirill-pershin-1556355-unsplash.jpg">
-                     <div class="element__info">
-                        <h3 class="element__title">Домбай</h3>
-                        <button class="element__button-like" type="button">
-                           <img class="element__like-image" alt="фото лайка" src="./images/like-button.svg">
-                        </button>
-                     </div>
-               </div>
-               <div class="element">
-                  <img class="element__image" alt="фото пейзажа" src="./images/kirill-pershin-1088404-unsplash.jpg">
-                     <div class="element__info">
-                        <h3 class="element__title">Карачаево-Ч...</h3>
-                        <button class="element__button-like" type="button">
-                           <img class="element__like-image" alt="фото лайка" src="./images/like-button.svg">
-                        </button>
-                     </div>
-               </div>
-               <div class="element">
-                  <img class="element__image" alt="фото пейзажа" src="./images/kirill-pershin-1556355-unsplash.jpg">
-                     <div class="element__info">
-                        <h3 class="element__title">Домбай</h3>
-                        <button class="element__button-like" type="button">
-                           <img class="element__like-image" alt="фото лайка" src="./images/like-button.svg">
-                        </button>
-                     </div>
-               </div>
-               <div class="element">
-                  <img class="element__image" alt="фото пейзажа" src="./images/kirill-pershin-1404681-unsplash.jpg">
-                     <div class="element__info">
-                        <h3 class="element__title">Гора Эльбрус</h3>
-                        <button class="element__button-like" type="button">
-                           <img class="element__like-image" alt="фото лайка" src="./images/like-button.svg">
-                        </button>
-                     </div>
-               </div>
-               <div class="element">
-                  <img class="element__image" alt="фото пейзажа" src="./images/kirill-pershin-1088404-unsplash.jpg">
-                     <div class="element__info">
-                        <p class="element__title">Карачаево-Ч...</p>
-                        <button class="element__button-like" type="button">
-                           <img class="element__like-image" alt="фото лайка" src="./images/like-button.svg">
-                        </button>
-                     </div>
-               </div>
-            </section>
+            <section class="elements"></section>
          </main>
          <footer class="footer">
             <p class="footer__copyright">&copy; 2020. Mesto Russia</p>
          </footer>
-         <section class="popup">
+         <div class="popup popup_edit">
             <div class="popup__container">
-               <button class="popup__button-close" type="button">
+               <button class="popup__button-close popup__button-close_theme_edit" type="button">
                   <img src="./images/CloseIcon.png" alt="фото кнопки" class="popup__close-image">
                </button>
-               <form class="popup__form" name="form-sumbit">
+               <form class="popup__form popup__form_theme_edit" name="form-edit">
                   <h2 class="popup__title">Редактировать профиль</h2>
                   <div class="popup__edit">
                      <input type="text" class="popup__field popup__field_theme_name" name="username">
                      <input type="text" class="popup__field popup__field_theme_about" name="aboutme">
                   </div>
-                  <button class="popup__button-sumbit" type="submit">Сохранить</button>
+                  <button class="popup__button-sumbit popup__button-sumbit_theme_edit" type="submit">Сохранить</button>
                </form>
             </div>
-         </section>
+         </div>
+         <div class="popup popup_add">
+            <div class="popup__container">
+               <button class="popup__button-close popup__button-close_theme_add" type="button">
+                  <img src="./images/CloseIcon.png" alt="фото кнопки" class="popup__close-image">
+               </button>
+               <form class="popup__form popup__form_theme_add" name="form-add">
+                  <h2 class="popup__title">Новое место</h2>
+                  <div class="popup__edit">
+                     <input type="text" class="popup__field popup__field_theme_name-foto" name="name-foto" value="Название">
+                     <input type="link" class="popup__field popup__field_theme_link" name="link" value="Ссылка на картинку">
+                  </div>
+                  <button class="popup__button-sumbit popup__button-sumbit_theme_add" type="submit">Создать</button>
+               </form>
+            </div>
+         </div>
+         <div class="popup popup_foto">
+            <div class="popup__container-foto">
+               <button class="popup__button-close popup__button-close_theme_foto" type="button">
+                  <img src="./images/CloseIcon.png" alt="фото кнопки" class="popup__close-image">
+               </button>
+               <img class="popup__foto" alt="фото пейзажа">
+               <h3 class="popup__foto-title"></h3>
+            </div>
+         </div>
       </div>
+      <template id="element-template">
+            <div class="element">
+               <button class="element__button-delete" type="button"></button>
+               <img class="element__image" alt="фото пейзажа">
+               <div class="element__info">
+                  <h3 class="element__title"></h3>
+                  <button class="element__button-like" type="button"></button>
+               </div>
+            </div>
+      </template>
       <script src="./scripts/script.js"></script>
    </body>
 </html>

@@ -30,7 +30,7 @@
          <footer class="footer">
             <p class="footer__copyright">&copy; 2020. Mesto Russia</p>
          </footer>
-         <div class="popup popup_edit">
+         <div class="popup popup_type_edit">
             <div class="popup__container">
                <button class="popup__button-close popup__button-close_theme_edit" type="button">
                   <img src="./images/CloseIcon.png" alt="фото кнопки" class="popup__close-image">
@@ -38,14 +38,14 @@
                <form class="popup__form popup__form_theme_edit" name="form-edit">
                   <h2 class="popup__title">Редактировать профиль</h2>
                   <div class="popup__edit">
-                     <input type="text" class="popup__field popup__field_theme_name" name="username">
-                     <input type="text" class="popup__field popup__field_theme_about" name="aboutme">
+                     <input type="text" class="popup__field popup__field_theme_name" placeholder="username">
+                     <input type="text" class="popup__field popup__field_theme_about" placeholder="aboutme">
                   </div>
                   <button class="popup__button-sumbit popup__button-sumbit_theme_edit" type="submit">Сохранить</button>
                </form>
             </div>
          </div>
-         <div class="popup popup_add">
+         <div class="popup popup_type_add">
             <div class="popup__container">
                <button class="popup__button-close popup__button-close_theme_add" type="button">
                   <img src="./images/CloseIcon.png" alt="фото кнопки" class="popup__close-image">
@@ -53,19 +53,19 @@
                <form class="popup__form popup__form_theme_add" name="form-add">
                   <h2 class="popup__title">Новое место</h2>
                   <div class="popup__edit">
-                     <input type="text" class="popup__field popup__field_theme_name-foto" name="name-foto" value="Название">
-                     <input class="popup__field popup__field_theme_link" name="link" value="Ссылка на картинку">
+                     <input type="text" class="popup__field popup__field_theme_name-foto" name="name-foto" placeholder="Название">
+                     <input class="popup__field popup__field_theme_link" name="link" placeholder="Ссылка на картинку">
                   </div>
                   <button class="popup__button-sumbit popup__button-sumbit_theme_add" type="submit">Создать</button>
                </form>
             </div>
          </div>
-         <div class="popup popup_foto">
+         <div class="popup popup_type_foto">
             <div class="popup__container-foto">
                <button class="popup__button-close popup__button-close_theme_foto" type="button">
                   <img src="./images/CloseIcon.png" alt="фото кнопки" class="popup__close-image">
                </button>
-               <img class="popup__foto" alt="фото пейзажа" src="#">
+               <img class="popup__foto" alt="#" src="#">
                <h3 class="popup__foto-title"></h3>
             </div>
          </div>
@@ -73,13 +73,13 @@
       <template id="element-template">
             <div class="element">
                <button class="element__button-delete" type="button"></button>
-               <img class="element__image" alt="фото пейзажа" src="#">
+               <img class="element__image" alt="#" src="#">
                <div class="element__info">
                   <h3 class="element__title"></h3>
                   <button class="element__button-like" type="button"></button>
                </div>
             </div>
       </template>
-      <script src="./scripts/script.js"></script>
+      <script src="./scripts/index.js"></script>
    </body>
 </html>

@@ -19,13 +19,9 @@ const elementsContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const popupFoto = document.querySelector('.popup__foto');
 const popupFotoName = document.querySelector('.popup__foto-title');
-
-
 const inputElement= document.querySelector('.popup__field');
-const popupSubmitButtonAdd= document.querySelector('.popup__button-sumbit_theme_add')
-const popupSubmitButtonEdit= document.querySelector('.popup__button-sumbit_theme_edit')
-
-
+const popupSubmitButtonAdd= document.querySelector('.popup__button-submit_theme_add')
+const popupSubmitButtonEdit= document.querySelector('.popup__button-submit_theme_edit')
 const initialCards = [
     {
       name: 'Архыз',
@@ -52,7 +48,6 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-
 function createElement(item){
   const cardElement = elementTemplate.cloneNode(true);
   const elementLikeButton = cardElement.querySelector('.element__button-like');
@@ -100,12 +95,6 @@ const openPopup = function(item) {
   item.addEventListener('click', closePopupByClickOverlay);
   document.addEventListener('keyup', closeByPressEsc);
 };
-
-
-
-
-
-
 function disableButton(button){
   button.classList.add('popup__button_invalid');
   button.disabled= 'disabled';
@@ -123,19 +112,6 @@ function restartError(popupElements){
     error.textContent='';
   });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 const closePopup = function(item) {
   item.classList.remove('popup_is-opened');
   item.removeEventListener('click', closePopupByClickOverlay);
@@ -164,8 +140,6 @@ const handleAddOpen = function(){
   formElementAdd.reset();
   disableButton(popupSubmitButtonAdd);
 };
-
-
 function editSubmitFormHandler (e) {   
     profileTitle.textContent =  nameInput.value;
     profileSubtitle.textContent =  jobInput.value;

@@ -37,7 +37,6 @@ const enableValidation = (config) => {
     
     });
 };
-  
 enableValidation({
     formSelector: '.popup__form',
     inputSelector: '.popup__field',

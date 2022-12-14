@@ -21,6 +21,11 @@ const popupFoto = document.querySelector('.popup__foto');
 const popupFotoName = document.querySelector('.popup__foto-title');
 
 
+const inputElement= document.querySelector('.popup__field');
+const popupSubmitButtonAdd= document.querySelector('.popup__button-sumbit_theme_add')
+const popupSubmitButtonEdit= document.querySelector('.popup__button-sumbit_theme_edit')
+
+
 const initialCards = [
     {
       name: 'Архыз',
@@ -90,33 +95,86 @@ const addSumbitFormHandler = (e) =>{
   renderElement(todo, elementsContainer);
   closePopup(popupAddElement);
 };
+const openPopup = function(item) {
+  item.classList.add('popup_is-opened');
+  item.addEventListener('click', closePopupByClickOverlay);
+  document.addEventListener('keyup', closeByPressEsc);
+};
+
+
+
+
+
+
+function disableButton(button){
+  button.classList.add('popup__button_invalid');
+  button.disabled= 'disabled';
+}
+function enableButton(button){
+  button.classList.remove('popup__button_invalid');
+  button.disabled = false;
+};
+function restartError(popupElements){
+  const inputs = [...popupElements.querySelectorAll('.popup__field')];
+  inputs.forEach((input) => {
+    const error = popupElements.querySelector(`#${input.id}-error`); 
+    input.classList.remove('popup__error_visible');
+    input.classList.remove('popup__field_type_error');
+    error.textContent='';
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 const closePopup = function(item) {
   item.classList.remove('popup_is-opened');
+  item.removeEventListener('click', closePopupByClickOverlay);
+  document.removeEventListener('keyup', closeByPressEsc);
 };
-const openPopup = function(item) {
-    item.classList.add('popup_is-opened');
+const closeByPressEsc = function(evt){
+  if(evt.key === 'Escape'){
+    const openPopup = document.querySelector('.popup_is-opened');
+    closePopup(openPopup);
+  }
+};
+const closePopupByClickOverlay = function(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target); 
+  }
 };
 const handleEditOpen = function(){
-  openPopup (popupEditElement)
-    nameInput.value =  profileTitle.textContent;
-    jobInput.value =   profileSubtitle.textContent;
+  openPopup (popupEditElement);
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+  restartError(popupEditElement);
+  enableButton(popupSubmitButtonEdit);
 };
-function editSubmitFormHandler (e) {   //отправка формы эдит
-    e.preventDefault();
+const handleAddOpen = function(){
+  openPopup(popupAddElement);
+  formElementAdd.reset();
+  disableButton(popupSubmitButtonAdd);
+};
+
+
+function editSubmitFormHandler (e) {   
     profileTitle.textContent =  nameInput.value;
     profileSubtitle.textContent =  jobInput.value;
     closePopup(popupEditElement);
 };
-const reset = function(item){
-  item.value='';
-}
-titleInput.addEventListener('click', () => reset(titleInput));
-linkInput.addEventListener('click', () => reset(linkInput));
-formElementEdit.addEventListener('submit', editSubmitFormHandler);// отправка edit формы 
-popupCloseEditButton.addEventListener('click', () => closePopup(popupEditElement)); // закрытие формы эдит 
-popupEditButton.addEventListener('click', handleEditOpen);// открытие формы эдит
-profileAddButton.addEventListener('click', () => openPopup(popupAddElement));// открытие формы адд
-popupCloseAddButton.addEventListener('click', () => closePopup(popupAddElement));//закрытие формы эдит
+profileAddButton.addEventListener('click', handleAddOpen);
+formElementEdit.addEventListener('submit', editSubmitFormHandler);
+popupCloseEditButton.addEventListener('click', () => closePopup(popupEditElement));
+popupEditButton.addEventListener('click', handleEditOpen);
+popupCloseAddButton.addEventListener('click', () => closePopup(popupAddElement));
 formElementAdd.addEventListener('submit', addSumbitFormHandler);
 popupCloseFotoButton.addEventListener('click', () => closePopup(popupFotoElement));

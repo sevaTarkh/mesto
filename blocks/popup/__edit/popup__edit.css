@@ -1,6 +1,6 @@
 .popup__edit{
     margin: 54px 36px 0;
-    max-width: 358px;
+    width: 358px;
 }
 @media screen and (max-width: 890px){
     .popup__edit{

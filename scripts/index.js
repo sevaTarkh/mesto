@@ -1,4 +1,3 @@
-const popup = document.querySelector('.popup');
 const popupEditElement = document.querySelector('.popup_type_edit');
 const popupAddElement = document.querySelector('.popup_type_add');
 const popupFotoElement = document.querySelector('.popup_type_foto');
@@ -95,22 +94,22 @@ const openPopup = function(item) {
   item.addEventListener('click', closePopupByClickOverlay);
   document.addEventListener('keyup', closeByPressEsc);
 };
-function disableButton(button){
-  button.classList.add('popup__button_invalid');
-  button.disabled= 'disabled';
-}
-function enableButton(button){
+function disableButtonForm(button){ 
+  button.classList.add('popup__button_invalid'); 
+  button.disabled= 'disabled'; 
+};
+function enableButtonForm(button){
   button.classList.remove('popup__button_invalid');
   button.disabled = false;
 };
-function restartError(popupElements){
-  const inputs = [...popupElements.querySelectorAll('.popup__field')];
-  inputs.forEach((input) => {
-    const error = popupElements.querySelector(`#${input.id}-error`); 
-    input.classList.remove('popup__error_visible');
-    input.classList.remove('popup__field_type_error');
-    error.textContent='';
-  });
+function resetError(popupElements){ 
+  const inputs = [...popupElements.querySelectorAll('.popup__field')]; 
+  inputs.forEach((input) => { 
+    const error = popupElements.querySelector(`#${input.id}-error`);  
+    input.classList.remove('popup__error_visible'); 
+    input.classList.remove('popup__field_type_error'); 
+    error.textContent=''; 
+  }); 
 };
 const closePopup = function(item) {
   item.classList.remove('popup_is-opened');
@@ -132,15 +131,16 @@ const handleEditOpen = function(){
   openPopup (popupEditElement);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  restartError(popupEditElement);
-  enableButton(popupSubmitButtonEdit);
+  resetError(popupEditElement); 
+  enableButtonForm(popupSubmitButtonEdit);
 };
 const handleAddOpen = function(){
   openPopup(popupAddElement);
   formElementAdd.reset();
-  disableButton(popupSubmitButtonAdd);
+  disableButtonForm(popupSubmitButtonAdd);
 };
-function editSubmitFormHandler (e) {   
+function editSubmitFormHandler (e) { 
+    e.preventDefault();  
     profileTitle.textContent =  nameInput.value;
     profileSubtitle.textContent =  jobInput.value;
     closePopup(popupEditElement);

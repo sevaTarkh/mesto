@@ -6,7 +6,6 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
-    margin-top: 13px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 0;
@@ -15,7 +14,4 @@
 .popup__field:focus{
     outline: 2px solid rgba(3, 33, 116, 0.342);
     border-bottom: none;
-}
-.popup__field:first-of-type{
-    margin-top: 0;
 }

@@ -16,12 +16,12 @@
                <img alt="фото портрет" src="./images/image.jpg" class="profile__avatar">
                <div class="profile__info">
                   <h1 class="profile__title">Жак-Ив Кусто</h1>
-                  <button class="profile__button-edit"  type="button">
+                  <button class="profile__button profile__button-edit"  type="button">
                      <img class="profile__edit-image" alt="фото карандаша" src="./images/edit-button.svg">
                   </button>
                   <p class="profile__subtitle">Исследователь океана</p>
                </div>
-               <button class="profile__button-add" type="button">
+               <button class="profile__button profile__button-add" type="button">
                   <img class="profile__add-image" alt="фото плюса" src="./images/add-button.svg">
                </button>
             </section>
@@ -77,7 +77,9 @@
       <template id="element-template">
             <div class="element">
                <button class="element__button-delete" type="button"></button>
-               <img class="element__image" alt="#" src="#">
+               <div class="element__image-container">
+                  <img class="element__image" alt="#" src="#">
+               </div>
                <div class="element__info">
                   <h3 class="element__title"></h3>
                   <button class="element__button-like" type="button"></button>

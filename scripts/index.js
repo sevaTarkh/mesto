@@ -8,9 +8,7 @@ const popupEditElement = document.querySelector('.popup_type_edit');
 const popupAddElement = document.querySelector('.popup_type_add');
 const popupFotoElement = document.querySelector('.popup_type_foto');
 const popupEditButton = document.querySelector('.profile__button-edit');
-const popupCloseEditButton = document.querySelector('.popup__button-close_theme_edit');
-const popupCloseAddButton = document.querySelector('.popup__button-close_theme_add');
-const popupCloseFotoButton = document.querySelector('.popup__button-close_theme_foto');
+const closeButtons = document.querySelectorAll('.popup__button-close');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const nameInput = document.querySelector('.popup__field_theme_name');
@@ -42,46 +40,31 @@ initialCards.forEach(function(item){
   elementsContainer.prepend(renderElement(item));
 });
 
-
-function disableButtonForm(button){ 
-  button.classList.add('popup__button_invalid'); 
-  button.disabled= 'disabled'; 
-};
-function enableButtonForm(button){
-  button.classList.remove('popup__button_invalid');
-  button.disabled = false;
-};
-function resetError(popupElements){ 
-  const inputs = [...popupElements.querySelectorAll('.popup__field')]; 
-  inputs.forEach((input) => { 
-    const error = popupElements.querySelector(`#${input.id}-error`);  
-    input.classList.remove('popup__error_visible'); 
-    input.classList.remove('popup__field_type_error'); 
-    error.textContent=''; 
-  }); 
-};
-
+const profileValiditiOpen = new FormValidator(config, formElementEdit);
+const fotoAddValiditiOpen = new FormValidator(config, formElementAdd);
 
 const handleEditOpen = function(){
   openPopup (popupEditElement);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  resetError(popupEditElement); 
-  enableButtonForm(popupSubmitButtonEdit);
+  profileValiditiOpen.resetValidation();
 };
 const handleAddOpen = function(){
   openPopup(popupAddElement);
   formElementAdd.reset();
-  disableButtonForm(popupSubmitButtonAdd);
+  fotoAddValiditiOpen.resetValidation();
 };
+
+
+
 const openPopup = function(item) {
   item.classList.add('popup_is-opened');
-  item.addEventListener('click', closePopupByClickOverlay);
+  item.addEventListener('mousedown', closePopupByClickOverlay);
   document.addEventListener('keyup', closeByPressEsc);
 };
 const closePopup = function(item) {
   item.classList.remove('popup_is-opened');
-  item.removeEventListener('click', closePopupByClickOverlay);
+  item.removeEventListener('mousedown', closePopupByClickOverlay);
   document.removeEventListener('keyup', closeByPressEsc);
 };
 const closeByPressEsc = function(evt){
@@ -95,6 +78,10 @@ const closePopupByClickOverlay = function(evt) {
     closePopup(evt.target); 
   }
 };
+closeButtons.forEach((button) => { 
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 
 function editSubmitFormHandler (e) { 
@@ -114,9 +101,6 @@ const addSumbitFormHandler = (e) =>{
 };
 
 
-popupCloseEditButton.addEventListener('click', () => closePopup(popupEditElement));
-popupCloseFotoButton.addEventListener('click', () => closePopup(popupFotoElement));
-popupCloseAddButton.addEventListener('click', () => closePopup(popupAddElement));
 formElementAdd.addEventListener('submit', addSumbitFormHandler);
 formElementEdit.addEventListener('submit', editSubmitFormHandler);
 profileAddButton.addEventListener('click', handleAddOpen);

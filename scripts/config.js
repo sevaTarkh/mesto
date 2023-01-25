@@ -6,4 +6,3 @@ export const config = {
     inputErrorClass: 'popup__field_type_error',
     errorClass: 'popup__error_visible'
 };
-

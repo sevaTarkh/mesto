@@ -7,7 +7,7 @@ export class Card{
     }
     _getTemplate() {
         const templateElement = document
-            .querySelector('#element-template')
+            .querySelector(this._templateSelector)
             .content.querySelector('.element')
             .cloneNode(true);
 
@@ -20,71 +20,32 @@ export class Card{
         this._elementLikeButton = this._element.querySelector('.element__button-like');
         this._elementDeleteButton = this._element.querySelector('.element__button-delete');
 
-        this._setEventListenerForLike();
-        this._setEventListenerForDelete();
-        this._setEventListenerForImage();
-
+        this._setEventListeners();
+    
         this._elementFoto.src = this._img;
         this._elementTitle.textContent = this._name;
         this._elementFoto.alt = this._name;
 
-
         return this._element;
     };
-    _setEventListenerForLike(){
+    _toggleLike(e){
+        e.target.classList.toggle('element_is-active');
+    }
+    _deleteCard(e){
+        e.target.closest('.element').remove();
+    }
+    _handleImageClick(){
+        this._openPopupImage(this._img, this._name);
+    }
+    _setEventListeners(){
         this._elementLikeButton.addEventListener('click', (e) =>{
-            e.target.classList.toggle('element_is-active');
-        })
-    };
-    _setEventListenerForDelete(){
+            this._toggleLike(e);
+        });
         this._elementDeleteButton.addEventListener('click', (e) =>{
-            e.target.closest('.element').remove();
-        })
-    };
-    _setEventListenerForImage(){
+            this._deleteCard(e);
+        });
         this._elementFoto.addEventListener('click', () =>{
-            this._openPopupImage(this._img, this._name);
-        })
-    };
-}
-
-
-
-
-
-// function createElement(item){
-//     const cardElement = elementTemplate.cloneNode(true);
-//     const elementLikeButton = cardElement.querySelector('.element__button-like');
-//     const elementDeleteButton = cardElement.querySelector('.element__button-delete');
-//     const elementFoto = cardElement.querySelector('.element__image');
-//     const elementTitle = cardElement.querySelector('.element__title');
-
-//     elementDeleteButton.addEventListener('click', deleteHandler);
-//     elementLikeButton.addEventListener('click', likeHandler);
-//     elementFoto.src = item.link;
-//     elementFoto.alt = 'фото' + ' ' + item.name;
-//     elementTitle.textContent = item.name;
-//     elementFoto.addEventListener('click', () => openFoto(elementFoto, elementTitle));
-
-//     return cardElement;
-//   };
-//   const renderElement = (item, wrapElement) =>{
-//     const element = createElement(item)
-//     wrapElement.prepend(element);
-//   };
-//   initialCards.forEach(function(item){
-//     renderElement(item, elementsContainer);
-//   });
-  
-//   const openFoto = function(foto, title){
-//     openPopup(popupFotoElement);
-//     popupFotoName.textContent = title.textContent;
-//     popupFoto.src = foto.src;
-//     popupFoto.alt = 'фото' + ' ' + title.textContent;
-//   }
-//   _deleteHandler = (e) => {
-//     e.target.closest('.element').remove();
-// };
-// _likeHandler = (e) => {
-//     e.target.classList.toggle('element_is-active');
-// };
+            this._handleImageClick();
+        });
+    }
+};

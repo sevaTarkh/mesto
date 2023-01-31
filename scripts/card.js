@@ -1,9 +1,10 @@
+
 export class Card{
-    constructor(cards, templateSelector, openPopupImage){
+    constructor(cards, templateSelector, handleImageClick){
         this._name = cards.name;
         this._img = cards.link;
         this._templateSelector = templateSelector;
-        this._openPopupImage = openPopupImage;
+        this._handleImageClick = handleImageClick;
     }
     _getTemplate() {
         const templateElement = document
@@ -34,9 +35,6 @@ export class Card{
     _deleteCard(e){
         e.target.closest('.element').remove();
     }
-    _handleImageClick(){
-        this._openPopupImage(this._img, this._name);
-    }
     _setEventListeners(){
         this._elementLikeButton.addEventListener('click', (e) =>{
             this._toggleLike(e);
@@ -45,7 +43,7 @@ export class Card{
             this._deleteCard(e);
         });
         this._elementFoto.addEventListener('click', () =>{
-            this._handleImageClick();
+            this._handleImageClick(this._img, this._name);
         });
     }
 };

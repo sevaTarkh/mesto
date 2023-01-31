@@ -1,113 +1,94 @@
-import { Card} from './card.js';
-import { initialCards } from './cards.js';
-import { config } from './config.js';
+import { Card} from './Card.js';
+import { initialCards } from './Cards.js';
+import { config } from './Config.js';
 import { FormValidator } from './FormValidator.js';
+import { Section } from './Section.js';
+import { Popup } from './Popup.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo.js';
 
 
 const popupEditElement = document.querySelector('.popup_type_edit');
 const popupAddElement = document.querySelector('.popup_type_add');
 const popupFotoElement = document.querySelector('.popup_type_foto');
 const popupEditButton = document.querySelector('.profile__button-edit');
-const closeButtons = document.querySelectorAll('.popup__button-close');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
 const nameInput = document.querySelector('.popup__field_theme_name');
 const jobInput = document.querySelector('.popup__field_theme_about');
 const formElementEdit = document.querySelector('.popup__form_theme_edit');
 const profileAddButton = document.querySelector('.profile__button-add');
 const formElementAdd = document.querySelector('.popup__form_theme_add');
-const titleInput = document.querySelector('.popup__field_theme_name-foto');
-const linkInput = document.querySelector('.popup__field_theme_link');
 const elementsContainer = document.querySelector('.elements');
-const popupSubmitButtonAdd= document.querySelector('.popup__button-submit_theme_add')
-const popupSubmitButtonEdit= document.querySelector('.popup__button-submit_theme_edit')
-const popupFoto = document.querySelector('.popup__foto');
-const popupFotoName = document.querySelector('.popup__foto-title');
 
 
-const openFoto = (link, name) =>{
-  openPopup(popupFotoElement);
-  popupFoto.alt = name;
-  popupFotoName.textContent = name;
-  popupFoto.src = link;
+const profileValiditi = new FormValidator(config, formElementEdit);
+const fotoAddValiditi = new FormValidator(config, formElementAdd);
+const profileValiditiOpen = new FormValidator(config, formElementEdit);
+const fotoAddValiditiOpen = new FormValidator(config, formElementAdd);
+const popupAdd = new Popup(popupAddElement);
+const popupEdit = new Popup(popupEditElement);
+const userInfoData = new UserInfo({
+  name: '.profile__title',
+  about: '.profile__subtitle'
+})
+
+
+function  openFoto(link, name) {
+  const fotoOpen = new PopupWithImage(popupFotoElement);
+  fotoOpen.setEventListeners();
+  const popupFotoOpen = fotoOpen.open(link, name);
+  return popupFotoOpen;
 };
 const renderElement = (item) =>{
   const card = new Card(item, '#element-template', openFoto);
   const cardelement = card.createCard();
   return cardelement;
 };
-initialCards.forEach(function(item){
-  elementsContainer.prepend(renderElement(item));
-});
-
-const profileValiditiOpen = new FormValidator(config, formElementEdit);
-const fotoAddValiditiOpen = new FormValidator(config, formElementAdd);
-
-const handleEditOpen = function(){
-  openPopup (popupEditElement);
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-  profileValiditiOpen.resetValidation();
-};
-const handleAddOpen = function(){
-  openPopup(popupAddElement);
-  formElementAdd.reset();
-  fotoAddValiditiOpen.resetValidation();
-};
+const sectionElementAdd = new Section({
+  items: initialCards, 
+  renderer: (item) => sectionElementAdd.addItem(renderElement(item))
+}, elementsContainer);
+sectionElementAdd.renderItems()
 
 
-
-const openPopup = function(item) {
-  item.classList.add('popup_is-opened');
-  item.addEventListener('mousedown', closePopupByClickOverlay);
-  document.addEventListener('keyup', closeByPressEsc);
+const editSubmitFormHandler = (values) => {  
+  userInfoData.setUserInfo(values); 
+  popupEdit.close();
 };
-const closePopup = function(item) {
-  item.classList.remove('popup_is-opened');
-  item.removeEventListener('mousedown', closePopupByClickOverlay);
-  document.removeEventListener('keyup', closeByPressEsc);
-};
-const closeByPressEsc = function(evt){
-  if(evt.key === 'Escape'){
-    const openPopup = document.querySelector('.popup_is-opened');
-    closePopup(openPopup);
-  }
-};
-const closePopupByClickOverlay = function(evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.target); 
-  }
-};
-closeButtons.forEach((button) => { 
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
-
-
-function editSubmitFormHandler (e) { 
-    e.preventDefault();  
-    profileTitle.textContent =  nameInput.value;
-    profileSubtitle.textContent =  jobInput.value;
-    closePopup(popupEditElement);
-};
-const addSumbitFormHandler = (e) =>{
-  e.preventDefault();
+const addSumbitFormHandler = (values) =>{
+  console.log(values)
+  const titleInput = values['name-foto'];
+  const linkInput = values['link'];
   const renderElementAdd = {
-    name: titleInput.value,
-    link: linkInput.value
+    name: titleInput,
+    link: linkInput
   }
   elementsContainer.prepend(renderElement(renderElementAdd));
-  closePopup(popupAddElement);
+  popupAdd.close();
 };
+const popupWithAddForm = new PopupWithForm(popupAddElement, addSumbitFormHandler);
+const popupWithEditForm = new PopupWithForm(popupEditElement, editSubmitFormHandler);
 
 
-formElementAdd.addEventListener('submit', addSumbitFormHandler);
-formElementEdit.addEventListener('submit', editSubmitFormHandler);
-profileAddButton.addEventListener('click', handleAddOpen);
-popupEditButton.addEventListener('click', handleEditOpen);
+
+profileAddButton.addEventListener('click', function(){
+  popupAdd.open();
+  formElementAdd.reset();
+  fotoAddValiditiOpen.resetValidation();
+});
+popupEditButton.addEventListener('click', function(){
+  const {name, about} = userInfoData.getUserInfo(); 
+  nameInput.value = name;
+  jobInput.value = about;
+  profileValiditiOpen.resetValidation();
+  popupEdit.open();
+});
 
 
-const profileValiditi = new FormValidator(config, formElementEdit);
-const fotoAddValiditi = new FormValidator(config, formElementAdd);
 profileValiditi.enableValidation();
 fotoAddValiditi.enableValidation();
+popupAdd.setEventListeners();
+popupEdit.setEventListeners();
+popupWithEditForm.setEventListeners();
+popupWithAddForm.setEventListeners();
+

@@ -63,20 +63,3 @@ export class FormValidator{
         this._setEventListeners();
     };
 };
-  // function disableButtonForm(button){ 
-//   button.classList.add('popup__button_invalid'); 
-//   button.disabled= 'disabled'; 
-// };
-// function enableButtonForm(button){
-//   button.classList.remove('popup__button_invalid');
-//   button.disabled = false;
-// };
-// function resetError(popupElements){ 
-//   const inputs = [...popupElements.querySelectorAll('.popup__field')]; 
-//   inputs.forEach((input) => { 
-//     const error = popupElements.querySelector(`#${input.id}-error`);  
-//     input.classList.remove('popup__error_visible'); 
-//     input.classList.remove('popup__field_type_error'); 
-//     error.textContent=''; 
-//   }); 
-// };

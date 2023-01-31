@@ -1,0 +1,20 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект: Место\r В данном проекте, основная задача освоить ООП(объектно-ориентированное программирование). \r Основная задача состояла в том, что код нужно было правильно организовать.\r Я создал два класса, которые отвечают за разные функции, а именно валидация и создание карточек\r я применил перебор массива с помощью метода forEach, а также\r включение валидации вызовом функции. Выделили валидацию в отдельный файл и\r сподключили к index.html. Добавили закрытие формы с помощью нажатия на \r отдельную кнопку и клик на оверлэй.\r Технологии, методики:\r 1. модули\r 2. классы\r 3. export и import\r 4. liveServer\r 5. this._\r ССЫЛКА: url(https://sevatarkh.github.io/mesto/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sevaTarkh/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sevaTarkh/mesto/issues"
+  },
+  "homepage": "https://github.com/sevaTarkh/mesto#readme"
+}

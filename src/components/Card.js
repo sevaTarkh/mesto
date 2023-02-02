@@ -32,8 +32,8 @@ export class Card{
     _toggleLike(e){
         e.target.classList.toggle('element_is-active');
     }
-    _deleteCard(e){
-        e.target.closest('.element').remove();
+    _deleteCard = () => {
+        this._element.remove();
     }
     _setEventListeners(){
         this._elementLikeButton.addEventListener('click', (e) =>{

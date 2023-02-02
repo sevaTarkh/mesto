@@ -1,6 +1,6 @@
 import { Card} from '../components/Card.js';
-import { initialCards } from '../components/Cards.js';
-import { config } from '../components/Config.js';
+import { initialCards } from '../utils/Cards.js';
+import { config } from '../utils/Config.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { Popup } from '../components/Popup.js';
@@ -25,35 +25,34 @@ const profileValiditi = new FormValidator(config, formElementEdit);
 const fotoAddValiditi = new FormValidator(config, formElementAdd);
 const profileValiditiOpen = new FormValidator(config, formElementEdit);
 const fotoAddValiditiOpen = new FormValidator(config, formElementAdd);
-const popupAdd = new Popup(popupAddElement);
-const popupEdit = new Popup(popupEditElement);
+const fotoOpen = new PopupWithImage('.popup_type_foto');
+const popupAdd = new Popup('.popup_type_add');
+const popupEdit = new Popup('.popup_type_edit');
 const userInfoData = new UserInfo({
-  name: '.profile__title',
-  about: '.profile__subtitle'
+  selectorName: '.profile__title',
+  selectorAbout: '.profile__subtitle'
 })
 
 
-function  openFoto(link, name) {
-  const fotoOpen = new PopupWithImage(popupFotoElement);
+function  openPhoto(link, name) {
   fotoOpen.setEventListeners();
   const popupFotoOpen = fotoOpen.open(link, name);
   return popupFotoOpen;
 };
-const renderElement = (item) =>{
-  const card = new Card(item, '#element-template', openFoto);
+const createCards = (item) =>{
+  const card = new Card(item, '#element-template', openPhoto);
   const cardelement = card.createCard();
   return cardelement;
 };
 const sectionElementAdd = new Section({
   items: initialCards, 
-  renderer: (item) => sectionElementAdd.addItem(renderElement(item))
-}, elementsContainer);
+  renderer: (item) => sectionElementAdd.addItem(createCards(item))
+},'.elements');
 sectionElementAdd.renderItems()
 
 
 const editSubmitFormHandler = (values) => {  
   userInfoData.setUserInfo(values); 
-  popupEdit.close();
 };
 const addSumbitFormHandler = (values) =>{
   console.log(values)
@@ -63,11 +62,10 @@ const addSumbitFormHandler = (values) =>{
     name: titleInput,
     link: linkInput
   }
-  elementsContainer.prepend(renderElement(renderElementAdd));
-  popupAdd.close();
+  sectionElementAdd.addItem(createCards(renderElementAdd));
 };
-const popupWithAddForm = new PopupWithForm(popupAddElement, addSumbitFormHandler);
-const popupWithEditForm = new PopupWithForm(popupEditElement, editSubmitFormHandler);
+const popupWithAddForm = new PopupWithForm('.popup_type_add', addSumbitFormHandler);
+const popupWithEditForm = new PopupWithForm('.popup_type_edit', editSubmitFormHandler);
 
 
 

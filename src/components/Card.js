@@ -14,7 +14,7 @@ export class Card{
 
         return templateElement;
     }
-    createCard(){
+    generateCard(){
         this._element = this._getTemplate();
         this._elementFoto = this._element.querySelector('.element__image');
         this._elementTitle = this._element.querySelector('.element__title');

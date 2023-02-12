@@ -36,17 +36,16 @@ const userInfoData = new UserInfo({
 
 function  openPhoto(link, name) {
   fotoOpen.setEventListeners();
-  const popupFotoOpen = fotoOpen.open(link, name);
-  return popupFotoOpen;
+  fotoOpen.open(link, name);
 };
-const createCards = (item) =>{
+const createCard = (item) =>{
   const card = new Card(item, '#element-template', openPhoto);
-  const cardelement = card.createCard();
+  const cardelement = card.generateCard();
   return cardelement;
 };
 const sectionElementAdd = new Section({
   items: initialCards, 
-  renderer: (item) => sectionElementAdd.addItem(createCards(item))
+  renderer: (item) => sectionElementAdd.addItem(createCard(item))
 },'.elements');
 sectionElementAdd.renderItems()
 
@@ -62,7 +61,7 @@ const addSumbitFormHandler = (values) =>{
     name: titleInput,
     link: linkInput
   }
-  sectionElementAdd.addItem(createCards(renderElementAdd));
+  sectionElementAdd.addItem(createCard(renderElementAdd));
 };
 const popupWithAddForm = new PopupWithForm('.popup_type_add', addSumbitFormHandler);
 const popupWithEditForm = new PopupWithForm('.popup_type_edit', editSubmitFormHandler);

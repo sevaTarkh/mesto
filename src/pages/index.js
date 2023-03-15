@@ -59,7 +59,6 @@ Promise.all([api.getInitialCards(), api.getUserInformationFromServer()])
 
 
 const openFoto = (link, name) => {
-  fotoOpen.setEventListeners();
   fotoOpen.open(link, name);
 }
 const createCard = (data) => {
@@ -80,7 +79,7 @@ const createCard = (data) => {
         })
         .catch((err) => {
           console.log(err); 
-        }); 
+        })
       })
     }
     },
@@ -130,7 +129,7 @@ const popupWithAddForm = new PopupWithForm('.popup_type_add', {
       console.log(err);
     })
     .finally(()=>{
-      setTimeout(()=> popupWithAddForm.returnButtonText(), 400)
+      popupWithAddForm.returnButtonText()
     })
   }
 });
@@ -147,7 +146,7 @@ const popupWithEditForm = new PopupWithForm('.popup_type_edit',
     console.log(err); 
   })
   .finally(()=>{
-    setTimeout(()=> popupWithEditForm.returnButtonText(), 400)
+    popupWithEditForm.returnButtonText()
   })
   }
 }
@@ -164,7 +163,7 @@ const popupWithAvatar = new PopupWithForm('.popup_type_avatar', {
       console.log(err);
     })
     .finally(()=>{
-      setTimeout(()=> popupWithAvatar.returnButtonText(), 400)
+      popupWithAvatar.returnButtonText()
     })
   }
 })
@@ -196,6 +195,7 @@ profileValiditi.enableValidation();
 fotoAddValiditi.enableValidation();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
+fotoOpen.setEventListeners();
 popupConfirmationDelete.setEventListeners();
 popupWithEditForm.setEventListeners();
 popupWithAddForm.setEventListeners();

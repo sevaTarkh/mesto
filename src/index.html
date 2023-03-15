@@ -12,13 +12,15 @@
          </header>
          <main class="content">
             <section class="profile">
-               <img alt="фото портрет" src="<%=require('./images/image.jpg')%>" class="profile__avatar">
+               <button class="profile__button-avatar" type="button">
+                  <img alt="фото портрет" src="<%=require('./images/image.jpg')%>" class="profile__avatar">
+               </button>
                <div class="profile__info">
-                  <h1 class="profile__title">Жак-Ив Кусто</h1>
+                  <h1 class="profile__title"></h1>
                   <button class="profile__button profile__button-edit"  type="button">
                      <img class="profile__edit-image" alt="фото карандаша" src="<%=require('./images/edit-button.svg')%>">
                   </button>
-                  <p class="profile__subtitle">Исследователь океана</p>
+                  <p class="profile__subtitle"></p>
                </div>
                <button class="profile__button profile__button-add" type="button">
                   <img class="profile__add-image" alt="фото плюса" src="<%=require('./images/add-button.svg')%>">
@@ -73,6 +75,32 @@
             </div>
          </div>
       </div>
+      <div class ='popup popup_type_delete'>
+         <div class="popup__container">
+            <form class="popup__form popup__form_theme_delete" name="form-edit" novalidate>
+               <h2 class="popup__title">Вы уверены?</h2>
+               <button class="popup__button-close popup__button-close_theme_delete" type="button">
+                  <img src="<%=require('./images/CloseIcon.png')%>" alt="фото кнопки" class="popup__close-image">
+               </button>
+               <button class="popup__button-submit popup__button-submit_theme_delete" type="submit">Да</button>
+            </form>
+         </div>
+      </div>
+      <div class ='popup popup_type_avatar'>
+         <div class="popup__container">
+            <form class="popup__form popup__form_theme_avatar" name="form-edit-avatar" novalidate>
+               <h2 class="popup__title">Обновить аватар</h2>
+               <div class="popup__edit">
+                  <input name='link-avatar' class="popup__field popup__field_theme_avatar-link" id="linkavatar" placeholder="Ссылка на картинку" required type="url">
+                  <span class="popup__input-error" id="linkavatar-error"></span>
+               </div>
+               <button class="popup__button-close popup__button-close_theme_delete" type="button">
+                  <img src="<%=require('./images/CloseIcon.png')%>" alt="фото кнопки" class="popup__close-image">
+               </button>
+               <button class="popup__button-submit popup__button-submit_theme_delete" type="submit">Сохранить</button>
+            </form>
+         </div>
+      </div>
       <template id="element-template">
             <div class="element">
                <button class="element__button-delete" type="button"></button>
@@ -81,7 +109,10 @@
                </div>
                <div class="element__info">
                   <h3 class="element__title"></h3>
-                  <button class="element__button-like" type="button"></button>
+                  <div>
+                     <button class="element__button-like" type="button"></button>
+                     <p class="element-likes">12</p>
+                  </div>
                </div>
             </div>
       </template>
